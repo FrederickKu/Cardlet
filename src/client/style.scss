@@ -1,0 +1,61 @@
+$green: #57BA98;
+$black: #182628;
+$btn-green: #3B945E;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.mainLogin {
+	widows: 100%;
+	height: 100vh;
+}
+
+.overallNav {
+	width: 100%;
+	background-color: $green;
+	padding: 1.2rem 1.8rem;
+}
+.navText{
+	display: inline-block;
+	width: 50%;
+	span {
+		color: $black;
+		font-size: 1.3rem;
+	}
+}
+
+.navLinks {
+	display: inline-block;
+	width: 50%;
+	text-align:right;
+	a {
+		font-size: 1.2rem;
+		color: $black;
+	}
+}
+
+.homeDisplay {
+	width: 100%;
+	text-align: center;
+	margin-top: 20vh;
+
+	.homeImage{
+		width: 70%;
+		margin: 0 auto;
+		img{
+			display:block;
+			width:100%;
+		}
+	}
+
+	.homeText{
+		margin-top: 5vh;
+		p{
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+	}
+}
+
