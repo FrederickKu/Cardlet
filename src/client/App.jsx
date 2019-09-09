@@ -9,6 +9,7 @@ import style from './style.scss';
 
 import Wallet from './components/wallet/wallet'
 import Card from './components/card/card'
+import Index from './components/index/index'
 
 
 class App extends React.Component {
@@ -37,6 +38,7 @@ class App extends React.Component {
             </div>
             <div className={`${style.parentContainer}`}>
                 <Switch>
+                    <Route path="/" exact render={props => (<Index {...props}/>)} />
                     <Route path="/wallet" render={props => (<Wallet {...props}/>)} />
                     <Route path="/card/:id" render={props => (<Card {...props} />)} />
                 </Switch>

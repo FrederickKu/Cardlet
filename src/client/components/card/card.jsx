@@ -16,7 +16,6 @@ class Card extends React.Component {
             deleteCard: false
         }
 
-        this.enableEdit=this.enableEdit.bind(this);
         this.deleteCard=this.deleteCard.bind(this);
     }
 

@@ -64,7 +64,7 @@ module.exports = (dbPoolInstance) => {
             let userID=userDetails.rows[0].user_id;
 
             //Delete From User Wallets
-            queryString = 'DELETE FROM othercards WHERE namecard_id = $1 AND user_id = $2';
+            queryString = 'DELETE FROM othercards WHERE namecard_id = $1 AND user_id = $2 ORDER BY linked_date DESC';
             values = [namecard_id,userID];
             let queryResult = await dbPoolInstance.query(queryString,values);
 

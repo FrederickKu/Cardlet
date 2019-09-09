@@ -1,0 +1,171 @@
+$green: #57BA98;
+$black: #182628;
+$btn-green: #3B945E;
+$blue: #042F4B;
+
+
+.indexTitle {
+	text-align: center;
+	font-size: 1.4rem;
+	font-weight: bold;
+	margin-top: 2vh;
+	color: $blue;
+}
+.indexCardContainer {
+	width: 100%;
+}
+
+.defaultCard{
+	width: 75%;
+	height: 23vh;
+	border: 1px solid $blue;
+	margin: 0 auto 4vh;
+	background-position: center;
+	background-size: cover;
+	border-radius:10px;
+}
+
+.cardDesign {
+	width: 75%;
+	height: 25vh;
+	border: 1px solid $blue;
+	margin: 0 auto 2vh;
+	border-radius: 15px;
+
+	.designTopRight{
+		padding-top: 2.3vh;
+		padding-right: 3%;
+		text-align:right;
+
+		.cardName {
+			margin:0;
+			font-weight: bold;
+			font-size: 1.3rem;
+			color: #1C6E8C;
+		}
+
+		.cardTitle{
+			font-style:italic;
+			margin:0;
+			margin-bottom: 1vh;
+		}
+	}
+
+	.designBottomLeft {
+		padding-left:3%;
+
+		p {
+			margin: 0;
+			font-size:0.7rem;
+			letter-spacing:0.1rem;
+
+			.label {
+				color: #1C6E8C;
+				font-weight: bold;
+			}
+		}
+	}
+
+	.cardbar {
+		margin-top:1.5vh;
+		width:65%;
+		height: 2vh;
+		background-color:#1C6E8C;
+	}
+}
+
+.indexStatsContainer {
+	width: 90%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: 0 auto;
+
+	.walletTotal,
+	.monthTotal {
+		width: 45%;
+		display: inline-block;
+		border: 1px solid $blue;
+		border-radius: 15px;
+		text-align:center;
+		height: 20vh;
+	}
+
+	.bigNumber {
+		font-weight: bold;
+		font-size: 4rem;
+		margin:0;
+	}
+
+	.smallText{
+		font-style: italic;
+		font-size: 0.9rem;
+		margin:0;
+	}
+}
+
+.subInfoTitle {
+	width: 90%;
+	margin: 3vh auto 1vh;
+	text-align: center;
+	font-size:1.2rem;
+	font-weight: bold;
+	color: $blue;
+}
+
+.recentlyAddedContainer {
+	width: 90%;
+	margin: 0 auto 8vh;
+
+	.individualCard {
+		width: 100%;
+		margin-bottom: 1vh;
+		border: 1.3px solid $blue;
+		border-radius: 20px;
+		display: flex;
+		flex: wrap;
+		align-items: center;
+		padding: 1vh 0;
+
+		.cardImage {
+			background-size:cover;
+			background-position: center;
+			width:35%;
+			margin-left:2%;
+			border-radius: 20px;
+			display: inline-block;
+
+			&::after{
+				content: " ";
+				display: block;
+				width: 100%;
+				padding-top: 100%;
+			}
+		}
+
+		.cardSummary {
+			display:inline-block;
+			width:55%;
+			margin-left: 5%;
+
+			p {
+				margin: 0.5vh 0 0;
+				font-size: 1rem;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
