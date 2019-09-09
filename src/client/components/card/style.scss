@@ -1,0 +1,76 @@
+$green: #57BA98;
+$black: #182628;
+$btn-green: #3B945E;
+$blue: #042F4B;
+
+.individualCardContainer {
+	width: 90%;
+	margin: 0 auto;
+
+	> p {
+		width: 100%;
+		text-align: center;
+		font-size: 1.4rem;
+		font-weight: bold;
+		margin-top: 2vh;
+	}
+
+	.individualCardDisplay {
+		width: 100%;
+
+		.cardImage {
+			background-size:cover;
+			background-position: center;
+			width:70%;
+			margin: 0 auto 3vh;
+			border-radius: 20px;
+
+			&::after{
+				content: " ";
+				display: block;
+				width: 100%;
+				padding-top: 70%;
+			}
+		}
+
+		.buttonContainer{
+			width: 70%;
+			text-align: center;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: space-around;
+			margin: 0 auto;
+
+			button {
+				display: inline-block;
+				width: 30%;
+			}
+
+			.editButton {
+				background-color: $blue;
+				color: #f2f2f2;
+			}
+		}
+	}
+
+	.displayCardInfo {
+		width: 90%;
+		margin: 3vh auto 2vh;
+
+		.tableBKG {
+			background-color: #757575;
+			width:35%;
+		}
+
+		.headerFont {
+			color:white;
+			font-weight:bold;
+		}
+
+		.addressWidth {
+			width:65%;
+
+		}
+	}
+}

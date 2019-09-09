@@ -125,9 +125,10 @@ ocrsdk.prototype.waitForCompletion = function(taskId, userCallback) {
 		return;
 	}
 	var recognizer = this;
-	var waitTimeout = 5000;
+	var waitTimeout = 1000;
 
 	function waitFunction() {
+        console.log('hello');
 		recognizer.getTaskStatus(taskId,
 			function(error, taskData) {
 				if (error) {

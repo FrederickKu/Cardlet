@@ -24,5 +24,6 @@ module.exports = (app, db) => {
   app.get('/wallet/upload', frontend.displayAddCard);
   app.post('/wallet/preview',upload.single('photo'),frontend.previewNameCard)
   app.post('/wallet/addcard',frontend.addCard);
+  app.post('/wallet/deletecard',frontend.deleteCard);
 
 };

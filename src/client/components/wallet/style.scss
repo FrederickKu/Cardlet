@@ -1,0 +1,96 @@
+$green: #57BA98;
+$black: #182628;
+$btn-green: #3B945E;
+$blue: #042F4B;
+
+.walletContainer{
+	width: 90%;
+	margin: 0 auto;
+
+	> p {
+		width: 100%;
+		text-align: center;
+		font-weight: bold;
+		font-size: 1.3rem;
+		margin-top: 2vh;
+		margin-bottom: 1vh;
+		color: $blue;
+	}
+
+	form {
+		text-align: center;
+		width:100%;
+
+		margin-bottom: 2vh;
+
+		i {
+			width: 10%;
+			display:inline-block;
+			font-size: 1.3rem;
+		}
+		input{
+			display: inline-block;
+			width: 85%;
+			border: none;
+			padding: 1vh 0 0.8vh;
+			outline: none;
+			border-bottom: 1px solid $blue;
+		}
+	}
+}
+
+.cardContainer{
+	width: 90%;
+	margin: 0 auto;
+
+	.individualCard {
+		width: 100%;
+		margin-bottom: 1vh;
+		border: 1.3px solid $blue;
+		border-radius: 20px;
+		display: flex;
+		flex: wrap;
+		align-items: center;
+		padding: 1vh 0;
+
+		.cardImage {
+			background-size:cover;
+			background-position: center;
+			width:35%;
+			margin-left:2%;
+			border-radius: 20px;
+			display: inline-block;
+
+			&::after{
+				content: " ";
+				display: block;
+				width: 100%;
+				padding-top: 100%;
+			}
+		}
+
+		.cardSummary {
+			display:inline-block;
+			width:55%;
+			margin-left: 5%;
+
+			p {
+				margin: 0.5vh 0 0;
+				font-size: 1rem;
+			}
+
+			> div{
+				margin: 0.5vh 0 0;
+
+				> a,
+				> i {
+					display: inline-block;
+					width: 50%;
+					text-align: center;
+					font-size: 1.5rem;
+					color: #333;
+				}
+			}
+		}
+	}
+}

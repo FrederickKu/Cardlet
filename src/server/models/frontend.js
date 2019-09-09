@@ -53,9 +53,32 @@ module.exports = (dbPoolInstance) => {
 
 
     }
+
+
+    let deleteCard = async function (namecard_id, username) {
+        try {
+            let queryString = `SELECT user_id FROM users WHERE username = $1`;
+            let values = [username]
+            let userDetails= await dbPoolInstance.query(queryString,values);
+
+            let userID=userDetails.rows[0].user_id;
+
+            //Delete From User Wallets
+            queryString = 'DELETE FROM othercards WHERE namecard_id = $1 AND user_id = $2';
+            values = [namecard_id,userID];
+            let queryResult = await dbPoolInstance.query(queryString,values);
+
+            return userID;
+        } catch (error) {
+            console.log(error)
+            return false;
+        }
+
+    }
     return {
         getUserCards,
         getUserWallet,
-        addCard
+        addCard,
+        deleteCard
     };
 }

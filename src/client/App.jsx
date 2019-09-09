@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, withRouter } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 import { hot } from 'react-hot-loader';
 
 import Cookies from 'universal-cookie';
@@ -8,26 +8,10 @@ const cookies = new Cookies();
 import style from './style.scss';
 
 import Wallet from './components/wallet/wallet'
+import Card from './components/card/card'
+
 
 class App extends React.Component {
-
-    constructor() {
-        super();
-        this.state = {
-            defaultCard: null
-        }
-    }
-
-    componentDidMount() {
-        fetch("/getUserDetails")
-        .then(response => response.json())
-        .then((result) => {
-            console.log(result);
-        },
-        (error) =>{
-                console.log(error)
-        })
-    }
 
     render() {
 
@@ -38,6 +22,7 @@ class App extends React.Component {
     } else {
         navbarLink = React.createElement('a',{href:"/wallet/upload"},<i className={'bx bx-plus'}></i>);
     }
+
 
     return (
         <React.Fragment>
@@ -51,7 +36,10 @@ class App extends React.Component {
                 </div>
             </div>
             <div className={`${style.parentContainer}`}>
-                <Route path="/wallet" render={() => (<Wallet />)} />
+                <Switch>
+                    <Route path="/wallet" render={props => (<Wallet {...props}/>)} />
+                    <Route path="/card/:id" render={props => (<Card {...props} />)} />
+                </Switch>
             </div>
             <div className={`${style.footer}`}>
                 <div className={`${style.footerHome}`}>
@@ -69,4 +57,4 @@ class App extends React.Component {
     }
 }
 
-export default withRouter(hot(module)(App));
+export default hot(module)(App);

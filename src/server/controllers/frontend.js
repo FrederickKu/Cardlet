@@ -69,10 +69,19 @@ module.exports = (db) => {
         success ? response.redirect('/wallet') : response.status(404);
     }
 
+
+    let deleteCard = async function (request,response) {
+        let userID= await db.frontend.deleteCard(parseInt(request.body.id),request.cookies.woof);
+        let userWallet =  await db.frontend.getUserWallet(userID);
+
+        response.send({userWallet:userWallet})
+    }
+
   return {
       getUserDetails,
       displayAddCard,
       previewNameCard,
-      addCard
+      addCard,
+      deleteCard
   };
 };

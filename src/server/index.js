@@ -2,6 +2,7 @@ const http = require('http');
 const express = require('express');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const db = require('./db');
 const path = require('path');
 
@@ -26,6 +27,8 @@ app.set('env', process.env.NODE_ENV);
 // Set up middleware
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(
   express.urlencoded({
