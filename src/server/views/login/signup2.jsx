@@ -31,6 +31,9 @@ class SignupTwo extends React.Component {
                         <img src={"https://res.cloudinary.com/dgv4tcunc/image/upload/v1567853175/C_yefdmo.png"} />
                         <p>ARDLET</p>
                     </div>
+                    <div className={'navigation-top-container'}>
+                        <a href={'/logout'}>Sign Out</a>
+                    </div>
                 </div>
                 <div className={"add-card-parent-container"}>
                     <div className={"add-card-container"}>

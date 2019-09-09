@@ -1,5 +1,6 @@
 const pg = require('pg');
 const login = require('./models/login');
+const frontend = require('./models/frontend');
 const url = require('url');
 
 var configs;
@@ -36,6 +37,7 @@ module.exports = {
    * ADD APP MODELS HERE
    */
   login: login(pool),
+  frontend: frontend(pool),
 
   //make queries directly from here
   queryInterface: (text, params, callback) => {

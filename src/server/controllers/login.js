@@ -1,3 +1,4 @@
+var performOCR = require('./performOCR');
 var cloudinary = require('cloudinary');
 var sha256=require('js-sha256');
 var SALT = 'ReAl sMo0Th Dude';
@@ -8,10 +9,6 @@ cloudinary.config({
     api_secret: 'd3fmILHQD53B3AqwQHC3s87Xp0U'
 });
 
-var ocrsdkModule = require('./ocrsdk.js');
-var serviceUrl = 'https://cloud.ocrsdk.com';
-var appId = 'cardwallet';
-var password = 'b+xfYUCyY8h7Xz6N8ch+dPGl';
 
 module.exports = (db) => {
 
@@ -113,7 +110,7 @@ module.exports = (db) => {
   };
 
   let previewNamecard = async function (request,response) {
-    await performOCR(request.file.path,(result)=>{
+    await performOCR.performOCR(request.file.path,(result)=>{
         result = JSON.parse(result);
         let resultFields = result.document.businessCard.field;
 

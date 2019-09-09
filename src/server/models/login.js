@@ -36,7 +36,7 @@ module.exports = (dbPoolInstance) => {
 
     let getUserDetails = async function (username) {
         try {
-            const queryString = `SELECT username, user_name, user_photo FROM users WHERE username = $1`;
+            const queryString = `SELECT user_id, username, user_name, user_photo FROM users WHERE username = $1`;
             const values = [username]
             const queryResult = await dbPoolInstance.query(queryString,values);
 

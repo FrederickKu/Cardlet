@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS namecards (
 	address TEXT,
 	company TEXT,
 	user_id int,
+	default_card BOOLEAN DEFAULT FALSE,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

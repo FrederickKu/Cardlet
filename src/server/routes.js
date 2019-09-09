@@ -5,7 +5,9 @@ var upload = multer({ dest: path.join(__dirname, 'uploads') });
 
 module.exports = (app, db) => {
   const login = require('./controllers/login')(db);
+  const frontend = require('./controllers/frontend')(db);
 
+  // Login controlller
   app.get('/login', login.displayLogin);
   app.post('/login',login.login);
   app.get('/logout',login.signout)
@@ -16,8 +18,11 @@ module.exports = (app, db) => {
   app.post('/signup2/upload',upload.single('photo'),login.previewNamecard);
   app.post('/signup2/addCard',login.addCard)
   app.get('/signup2/design',login.designCard)
-//   app.get('/signup2/confirm')
 
-
+  // frontend AJAX Calls
+  app.get('/getUserDetails', frontend.getUserDetails);
+  app.get('/wallet/upload', frontend.displayAddCard);
+  app.post('/wallet/preview',upload.single('photo'),frontend.previewNameCard)
+  app.post('/wallet/addcard',frontend.addCard);
 
 };

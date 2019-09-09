@@ -1,6 +1,6 @@
 var React = require("react");
 
-class Upload extends React.Component {
+class AddCard extends React.Component {
 
   render() {
 
@@ -13,8 +13,9 @@ class Upload extends React.Component {
             <meta name={"author"} content={"Anton Fisher"} />
             <link rel={"stylesheet"} href={"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"} integrity={"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"} crossorigin={"anonymous"} />
             <link href={"https://fonts.googleapis.com/css?family=PT+Sans&display=swap"} rel={"stylesheet"} />
+            <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.3/css/boxicons.min.css' rel='stylesheet' />
             <link rel={"stylesheet"} href={"/style.css"} />
-            <title>Cardlet Register</title>
+            <title>Cardlet</title>
         </head>
         <body>
             <div className={"container-fluid p-0"}>
@@ -24,16 +25,16 @@ class Upload extends React.Component {
                         <p>ARDLET</p>
                     </div>
                     <div className={'navigation-top-container'}>
-                        <a href={'/logout'}>Sign Out</a>
+                        <a href={'/wallet/upload'}><i className={'bx bx-plus'}></i></a>
                     </div>
                 </div>
                 <div className={"upload-card-parent-container"}>
                     <div className={"upload-card-container"}>
-                        <p>Add Your First Business Card</p>
+                        <p>Add a Business Card</p>
                         <div className={"card-preview"} id = {"card-preview"}>
                             <p id = {"card-preview-text"}>-- Card Preview --</p>
                         </div>
-                        <form method={"post"} action={"/signup2/upload"} id={'upload-form'} enctype={"multipart/form-data"} >
+                        <form method={"post"} action={"/wallet/preview"} id={'upload-form'} enctype={"multipart/form-data"} >
                             <div className={'input-group'}>
                                 <div className={"custom-file"}>
                                     <input type={"file"} id={'card-photo'} accept={"image/*;capture=camera"} className={"custom-file-input"} placeholder ={'User Photo'} aria-describedby={"User Photo"} name={'photo'} />
@@ -44,7 +45,15 @@ class Upload extends React.Component {
                     </div>
                 </div>
                 <div className={'footer'}>
-                    <p>Decide what to add here?</p>
+                    <div className={`footerHome`}>
+                        <p><a href={"/"}><i className={'bx bx-home'}></i></a></p>
+                    </div>
+                    <div className={`footerCard`}>
+                        <p><a href={"/wallet"}><i className={'bx bx-id-card'}></i></a></p>
+                    </div>
+                    <div className={`footerPerson`}>
+                        <p><i className={'bx bx-user'}></i></p>
+                    </div>
                 </div>
             </div>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -57,4 +66,4 @@ class Upload extends React.Component {
   }
 }
 
-module.exports = Upload;
+module.exports = AddCard;
