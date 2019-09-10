@@ -1,0 +1,34 @@
+$green: #57BA98;
+$black: #182628;
+$btn-green: #3B945E;
+$blue: #042F4B;
+
+.setModalWidth{
+	width: 75%;
+	margin: 0 auto;
+}
+
+.headerDisplayFlex {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid $blue;
+	box-shadow: 0 2px 1px $blue;
+}
+
+.modelButtonsContainer{
+	display:block;
+	width: 100%;
+	text-align: center;
+	margin-top: 2vh;
+	a{
+		display:block;
+		margin-bottom: 2vh;
+
+		button{
+			background-color: $blue;
+			color: white;
+		}
+	}
+}

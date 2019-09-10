@@ -107,7 +107,7 @@ class Index extends React.Component {
                 let recentlyAdded = this.recentlyAdded();
             return (
                 <React.Fragment>
-                    <p className={`${style.indexTitle}`}>Welcome to CardLet, {this.state.userDetail.user_name}!</p>
+                    <p className={`${style.indexTitle}`}>Welcome to Cardlet, {this.state.userDetail.user_name}!</p>
                     <div className={`${style.indexCardContainer}`}>
                         {userDefaultCard}
                     </div>

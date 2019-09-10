@@ -10,6 +10,7 @@ import style from './style.scss';
 import Wallet from './components/wallet/wallet'
 import Card from './components/card/card'
 import Index from './components/index/index'
+import UserModal from './components/user/modal'
 
 
 class App extends React.Component {
@@ -51,9 +52,10 @@ class App extends React.Component {
                     <p><Link to="/wallet"><i className={'bx bx-id-card'}></i></Link></p>
                 </div>
                 <div className={`${style.footerPerson}`}>
-                    <p><i className={'bx bx-user'}></i></p>
+                    <p><i className={'bx bx-user'} data-toggle={"modal"} data-target={"#userModal"} ></i></p>
                 </div>
             </div>
+            <UserModal />
         </React.Fragment>
     );
     }
