@@ -11,7 +11,6 @@ module.exports = (db) => {
 
     let getUserDetails = async function (request,response) {
         let [success,userDetails] = await db.login.getUserDetails(request.cookies.woof);
-        console.log(userDetails)
         let userCard = await db.frontend.getUserCards(userDetails.user_id);
         let userWallet =  await db.frontend.getUserWallet(userDetails.user_id);
 
@@ -77,11 +76,18 @@ module.exports = (db) => {
         response.send({userWallet:userWallet})
     }
 
+    let editCard= async function (request,response) {
+        let displayCard = await db.frontend.editCard(request.body,request.cookies.woof);
+
+        response.send({displayCard:displayCard})
+    }
+
   return {
       getUserDetails,
       displayAddCard,
       previewNameCard,
       addCard,
-      deleteCard
+      deleteCard,
+      editCard
   };
 };

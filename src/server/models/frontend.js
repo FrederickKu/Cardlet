@@ -9,7 +9,7 @@ module.exports = (dbPoolInstance) => {
     }
 
     let getUserWallet = async function (id) {
-        const queryString = "SELECT * FROM namecards INNER JOIN othercards ON (namecards.namecard_id = othercards.namecard_id) WHERE othercards.user_id = $1";
+        const queryString = "SELECT * FROM namecards INNER JOIN othercards ON (namecards.namecard_id = othercards.namecard_id) WHERE othercards.user_id = $1 ORDER BY updated_at DESC";
         const values = [id];
         const queryResult = await dbPoolInstance.query(queryString,values);
 
@@ -64,7 +64,7 @@ module.exports = (dbPoolInstance) => {
             let userID=userDetails.rows[0].user_id;
 
             //Delete From User Wallets
-            queryString = 'DELETE FROM othercards WHERE namecard_id = $1 AND user_id = $2 ORDER BY linked_date DESC';
+            queryString = 'DELETE FROM othercards WHERE namecard_id = $1 AND user_id = $2';
             values = [namecard_id,userID];
             let queryResult = await dbPoolInstance.query(queryString,values);
 
@@ -75,10 +75,35 @@ module.exports = (dbPoolInstance) => {
         }
 
     }
+
+    let editCard = async function (details,username) {
+        try {
+            let queryString = "UPDATE namecards SET namecard_image = $1, name = $2, title = $3, phone = $4, mobile = $5, email = $6, website = $7, address = $8, company = $9, updated_at = CURRENT_TIMESTAMP WHERE namecard_id = $10";
+            let values = [details.namecard_image,details.name,details.title,details.phone,details.mobile,details.email,details.website,details.address,details.company,details.namecard_id];
+
+            let queryResult = await dbPoolInstance.query(queryString,values);
+
+            queryString = `SELECT user_id FROM users WHERE username = $1`;
+            values = [username];
+            queryResult = await dbPoolInstance.query(queryString,values);
+
+            let userID=queryResult.rows[0].user_id;
+
+            queryString = "SELECT * FROM namecards INNER JOIN othercards ON (namecards.namecard_id = othercards.namecard_id) WHERE othercards.user_id = $1 AND namecards.namecard_id = $2";
+            values = [userID,details.namecard_id];
+
+            queryResult = await dbPoolInstance.query(queryString,values);
+
+            return queryResult.rows[0];
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return {
         getUserCards,
         getUserWallet,
         addCard,
-        deleteCard
+        deleteCard,
+        editCard
     };
 }

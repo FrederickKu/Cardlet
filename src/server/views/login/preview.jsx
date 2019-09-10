@@ -42,28 +42,28 @@ class Preview extends React.Component {
                                 <input type={"text"} className={"form-control"} id={"card-title"} placeholder={"Title"}   defaultValue={this.props.title} name={'title'} />
                             </div>
                             <div className={"form-group"}>
-                                <label for={"card-phone"}  >Phone</label>
+                                <label for={"card-phone"}>Phone</label>
                                 <input type={"text"} className={"form-control"} id={"card-phone"} placeholder={"Phone"}   defaultValue={this.props.phone} name={'phone'} />
                             </div>
                             <div className={"form-group"}>
-                                <label for={"card-mobile"}  >Mobile</label>
+                                <label for={"card-mobile"}>Mobile</label>
                                 <input type={"text"} className={"form-control"} id={"card-mobile"} placeholder={"Mobile"}   defaultValue={this.props.mobile} name={'mobile'} />
                             </div>
                             <div className={"form-group"}>
-                                <label for={"card-email"}  >Email</label>
+                                <label for={"card-email"}>Email</label>
                                 <input type={"text"} className={"form-control"} id={"card-email"} placeholder={"Email"}   defaultValue={this.props.email} name={'email'}/>
                             </div>
                             <div className={"form-group"}>
-                                <label for={"card-company"}  >Company</label>
+                                <label for={"card-company"}>Company</label>
                                 <input type={"text"} className={"form-control"} id={"card-company"} placeholder={"Company"}   defaultValue={this.props.company} name={'company'}/>
                             </div>
                             <div className={"form-group"}>
-                                <label for={"card-address"}  >Address</label>
-                                <input type={"text"} className={"form-control"} id={"card-address"} placeholder={"Address"}   defaultValue={this.props.address}  name={'address'} />
+                                <label for={"card-website"}>Website</label>
+                                <input type={"text"} className={"form-control"} id={"card-website"} placeholder={"Website"}   defaultValue={this.props.website} name={'website'} />
                             </div>
                             <div className={"form-group"}>
-                                <label for={"card-website"}  >Website</label>
-                                <input type={"text"} className={"form-control"} id={"card-website"} placeholder={"Website"}   defaultValue={this.props.website} name={'website'} />
+                                <label for={"card-address"}>Address</label>
+                                <textarea col={"3"} type={"text"} className={"form-control"} id={"card-address"} placeholder={"Address"}   defaultValue={this.props.address}  name={'address'} />
                             </div>
                             <input type={"hidden"} name={"url"}   defaultValue = {this.props.url} />
                             <div className={'add-card-button-container'}>

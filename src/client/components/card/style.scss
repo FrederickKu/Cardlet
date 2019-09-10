@@ -42,24 +42,27 @@ $blue: #042F4B;
 			justify-content: space-around;
 			margin: 0 auto;
 
-			button {
-				display: inline-block;
-				width: 30%;
+			.editButton,
+			.deleteButton {
+				color: $blue;
+				width: 50%;
+				text-align: center;
+				font-size: 2rem;
+				margin: 0;
 			}
 
-			.editButton {
-				background-color: $blue;
-				color: #f2f2f2;
+			.deleteButton{
+				color: #F93943;
 			}
 		}
 	}
 
 	.displayCardInfo {
 		width: 90%;
-		margin: 3vh auto 2vh;
+		margin: 2vh auto 2vh;
 
 		.tableBKG {
-			background-color: #757575;
+			background-color:$blue;
 			width:35%;
 		}
 
@@ -71,6 +74,33 @@ $blue: #042F4B;
 		.addressWidth {
 			width:65%;
 
+		}
+	}
+}
+
+.formContainer {
+	width: 90%;
+	margin: 0 auto 3vh;
+
+	.formButtons {
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+
+		button {
+			width: 30%;
+			display: inline-block;
+		}
+
+		.confirmEdit {
+			background-color: $blue;
+			color: white;
+		}
+
+		.cancelEdit {
+			background-color: #757575;
+			color:white;
 		}
 	}
 }
