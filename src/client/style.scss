@@ -27,8 +27,7 @@ $blue: #042F4B;
 
 	p {
 		display: inline-block;
-		font-family: 'PT Sans', sans-serif;
-		font-size:1.2rem;
+		font-size:1.3rem;
 		letter-spacing: 0.1rem;
 		margin:0 0 0 0.1rem;
 	}
@@ -43,8 +42,7 @@ $blue: #042F4B;
 
 	a {
 		display: inline-block;
-		font-family: 'PT Sans', sans-serif;
-		font-size:1.2rem;
+		font-size:1.3rem;
 		letter-spacing: 0.1rem;
 		margin: 0 5%;
 		color: #333;
@@ -65,6 +63,12 @@ $blue: #042F4B;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
+
+	>p{
+		margin-top:2vh;
+		font-weight:bold;
+		font-style: italic;
+	}
 
 	.footerHome,
 	.footerCard,

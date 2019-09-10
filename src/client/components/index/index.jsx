@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './style.scss';
+import { Redirect } from "react-router-dom";
 var moment = require('moment');
 
 
@@ -102,26 +103,30 @@ class Index extends React.Component {
       render(){
 
         if (this.state.isLoaded) {
+            if(this.state.userCard.length > 0 ){
                 let userDefaultCard = this.getDefault();
                 let userStats = this.getStats();
                 let recentlyAdded = this.recentlyAdded();
-            return (
-                <React.Fragment>
-                    <p className={`${style.indexTitle}`}>Welcome to Cardlet, {this.state.userDetail.user_name}!</p>
-                    <div className={`${style.indexCardContainer}`}>
-                        {userDefaultCard}
-                    </div>
-                    <p className={`${style.indexTitle}`}>Information</p>
-                    <div className={`${style.indexStatsContainer}`}>
-                        {userStats}
-                    </div>
-                    <p className={`${style.subInfoTitle}`}>Recent 5</p>
-                    <div className={`${style.recentlyAddedContainer}`}>
-                        {recentlyAdded}
-                    </div>
-                </React.Fragment>
 
-            )
+                return (
+                    <React.Fragment>
+                        <p className={`${style.indexTitle}`}>Welcome to Cardlet, {this.state.userDetail.user_name}!</p>
+                        <div className={`${style.indexCardContainer}`}>
+                            {userDefaultCard}
+                        </div>
+                        <p className={`${style.indexTitle}`}>Information</p>
+                        <div className={`${style.indexStatsContainer}`}>
+                            {userStats}
+                        </div>
+                        <p className={`${style.subInfoTitle}`}>Recent 5</p>
+                        <div className={`${style.recentlyAddedContainer}`}>
+                            {recentlyAdded}
+                        </div>
+                    </React.Fragment>
+                )
+            } else {
+                window.location.replace("/signup2");
+            }
         } else {
             console.log('display else');
             return (

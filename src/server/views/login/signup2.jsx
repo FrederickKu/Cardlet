@@ -44,7 +44,7 @@ class SignupTwo extends React.Component {
                     </div>
                 </div>
                 <div className={'footer'}>
-                    <p>Decide what to add here?</p>
+                    <p>A convenient way to store Business Cards</p>
                 </div>
             </div>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

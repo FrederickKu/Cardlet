@@ -110,8 +110,7 @@
 
 .navigation-top-container > a {
 	display: inline-block;
-	font-family: 'PT Sans', sans-serif;
-	font-size:1.8rem;
+	font-size:1.3rem;
 	letter-spacing: 0.1rem;
 	margin: 0 5%;
 	color: #333;
@@ -129,32 +128,11 @@
 	align-items: center;
 }
 
-.footer .footerHome,
-.footer .footerCard,
-.footer .footerPerson {
-	width: 33%;
-}
-
-.footer .footerHome p,
-.footer .footerCard p,
-.footer .footerPerson p {
-	margin: 0;
-	padding-top: 1vh;
-	text-align: center;
-
-}
-
-.footer .footerHome p a,
-.footer .footerCard p a,
-.footer .footerPerson p i {
-	color: #333;
-	font-size: 1.8rem
-}
-
 .footer>p{
 	text-align: center;
 	font-style: italic;
-	margin: 0;
+	font-weight: bold;
+	 margin: 0;
 }
 
 /* signup2.jsx */
