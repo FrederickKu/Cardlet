@@ -14,6 +14,7 @@ class UserCards extends React.Component {
         }
 
         this.deleteCard=this.deleteCard.bind(this);
+        this.changeDefault=this.changeDefault.bind(this);
     }
 
     componentDidMount() {
@@ -21,7 +22,6 @@ class UserCards extends React.Component {
         .then(response => response.json())
         .then((result) => {
             let defaultCard = result.userCard.filter(card => card.default_card);
-            console.log(defaultCard)
             this.setState({userCard: result.userCard, defaultCard:defaultCard[0], userDetails: result.userDetails, isLoaded:true})
         },
         (error) =>{
@@ -30,8 +30,6 @@ class UserCards extends React.Component {
     }
 
     deleteCard(){
-        this.setState({isLoaded: false})
-
         let data={
             id:event.target.id
         }
@@ -46,7 +44,31 @@ class UserCards extends React.Component {
         })
         .then(response => response.json())
         .then((result) => {
-            this.setState({userCard: result.userCard, isLoaded:true})
+            this.setState({userCard: result.userCard})
+        },
+        (error) =>{
+                console.log(error)
+        })
+    }
+
+    changeDefault(event){
+        let data = {
+            newDefault: event.target.id,
+            oldDefault: this.state.defaultCard.namecard_id
+        }
+
+        fetch("/user/changedefault", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            },
+            body: JSON.stringify(data)
+
+        })
+        .then(response => response.json())
+        .then((result) => {
+            let defaultCard = result.userCard.filter(card => card.default_card);
+            this.setState({userCard: result.userCard, defaultCard:defaultCard[0]});
         },
         (error) =>{
                 console.log(error)
@@ -76,7 +98,7 @@ class UserCards extends React.Component {
                             <div className={`${style.cardButtons}`}>
                                 <Link to={`/card/${card.namecard_id}`}><i className={'bx bxs-user-detail'}></i></Link>
                                 <a><i className={'bx bx-trash'} id={card.namecard_id} onClick={this.deleteCard}></i></a>
-                                {card.default_card ? <a><i class='bx bxs-star' ></i></a> : <a><i class='bx bx-star' ></i></a>}
+                                {card.default_card ? <a><i className={'bx bxs-star'} ></i></a> : <a><i className={'bx bx-star'} id={card.namecard_id} onClick = {this.changeDefault} ></i></a>}
                             </div>
                         </div>
                     )
@@ -88,7 +110,7 @@ class UserCards extends React.Component {
                             <div className={`${style.cardButtons}`}>
                                 <Link to={`/card/${card.namecard_id}`}><i className={'bx bxs-user-detail'}></i></Link>
                                 <a><i className={'bx bx-trash'} id={card.namecard_id} onClick={this.deleteCard}></i></a>
-                                {card.default_card ? <a><i class='bx bxs-star' ></i></a> : <a><i class='bx bx-star' ></i></a>}
+                                {card.default_card ? <a><i className={'bx bxs-star'} ></i></a> : <a><i className={'bx bx-star'} id={card.namecard_id} onClick = {this.changeDefault} ></i></a>}
                             </div>
                         </div>
                     )

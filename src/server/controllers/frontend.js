@@ -144,6 +144,15 @@ module.exports = (db) => {
         response.render('frontend/userdesign')
     }
 
+    let userChangeDefault = async function (request,response) {
+        let changeDefault = await db.frontend.changeDefault(parseInt(request.body.oldDefault),parseInt(request.body.newDefault));
+        let [success,userDetails] = await db.login.getUserDetails(request.cookies.woof);
+        let userCard = await db.frontend.getUserCards(userDetails.user_id);
+
+
+        response.send({userCard: userCard});
+    }
+
   return {
       getUserDetails,
       displayAddCard,
@@ -156,6 +165,7 @@ module.exports = (db) => {
       displayUserUpload,
       previewUserCard,
       userAddCard,
-      userDesignCard
+      userDesignCard,
+      userChangeDefault
   };
 };

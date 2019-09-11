@@ -144,6 +144,26 @@ module.exports = (dbPoolInstance) => {
         }
 
     }
+
+    let changeDefault = async function (oldID, newID){
+        try {
+            let queryString = "UPDATE namecards SET default_card = FALSE WHERE namecard_id = $1";
+            let values = [oldID];
+
+            let queryResult = await dbPoolInstance.query(queryString,values);
+
+            queryString = "UPDATE namecards SET default_card = TRUE WHERE namecard_id = $1";
+            values = [newID];
+
+            queryResult = await dbPoolInstance.query(queryString,values);
+
+            return;
+        } catch(error) {
+            console.log("Change Card",error)
+            return false;
+        }
+    }
+
     return {
         getUserCards,
         getUserWallet,
@@ -151,6 +171,7 @@ module.exports = (dbPoolInstance) => {
         deleteCard,
         editCard,
         deleteUserCard,
-        userAddCard
+        userAddCard,
+        changeDefault
     };
 }

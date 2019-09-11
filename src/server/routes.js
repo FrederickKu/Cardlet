@@ -34,5 +34,6 @@ module.exports = (app, db) => {
   app.post('/user/upload',upload.single('photo'),frontend.previewUserCard);
   app.post('/user/addcard',frontend.userAddCard);
   app.get('/user/design',frontend.userDesignCard);
+  app.post('/user/changedefault',frontend.userChangeDefault);
 
 };

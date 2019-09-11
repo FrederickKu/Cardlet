@@ -31,7 +31,8 @@ class Card extends React.Component {
         .then(response => response.json())
         .then((result) => {
             const cardID = parseInt(this.props.match.params.id);
-            const card = result.userWallet.filter(card => card.namecard_id === cardID)[0];
+            const allUserCard = result.userWallet.concat(result.userCard)
+            const card = allUserCard.filter(card => card.namecard_id === cardID)[0];
             this.setState({displayCard: card, cardEdit: card, isLoaded: true})
         },
         (error) =>{
