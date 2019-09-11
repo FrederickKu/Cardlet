@@ -12,6 +12,18 @@ cloudinary.config({
 
 module.exports = (db) => {
 
+    let checkAuth = async function (username, session) {
+        if (username === undefined) {
+            return true;
+        } else {
+            const cookie = sha256(username+SALT);
+            if (session !== cookie){
+                return true;
+            }
+        }
+
+        return false;
+    }
 
   let displayLogin = async function (request, response) {
     response.render('login/login');
@@ -40,16 +52,37 @@ module.exports = (db) => {
   };
 
   let displaySignupTwo = async function (request,response) {
+        if (checkAuth(response.cookies.woof,response.cookies.meow)) {
+            if(woof in response.cookies || meow in response.cookies){
+                response.redirect('/logout')
+            }
+            response.redirect('/')
+        }
+
       let [exist,details] = await db.login.getUserDetails(request.cookies.woof);
 
       response.render('login/signup2',{details:details});
   };
 
   let displayUpload = async function (request,response) {
+    if (checkAuth(response.cookies.woof,response.cookies.meow)) {
+        if(woof in response.cookies || meow in response.cookies){
+            response.redirect('/logout')
+        }
+        response.redirect('/')
+    }
+
       response.render('login/upload')
   };
 
   let previewNamecard = async function (request,response) {
+    if (checkAuth(response.cookies.woof,response.cookies.meow)) {
+        if(woof in response.cookies || meow in response.cookies){
+            response.redirect('/logout')
+        }
+        response.redirect('/')
+    }
+
     await performOCR.performOCR(request.file.path,(result)=>{
         result = JSON.parse(result);
         let resultFields = result.document.businessCard.field;
@@ -89,6 +122,13 @@ module.exports = (db) => {
   }
 
   let designCard = async function (request,response) {
+    if (checkAuth(response.cookies.woof,response.cookies.meow)) {
+        if(woof in response.cookies || meow in response.cookies){
+            response.redirect('/logout')
+        }
+        response.redirect('/')
+    }
+
       response.render('login/design');
   }
 

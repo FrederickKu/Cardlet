@@ -9,6 +9,19 @@ cloudinary.config({
 
 module.exports = (db) => {
 
+    let checkAuth = async function (username, session) {
+        if (username === undefined) {
+            return true;
+        } else {
+            const cookie = sha256(username+SALT);
+            if (session !== cookie){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     let getUserDetails = async function (request,response) {
         let [success,userDetails] = await db.login.getUserDetails(request.cookies.woof);
         let userCard = await db.frontend.getUserCards(userDetails.user_id);
@@ -25,10 +38,26 @@ module.exports = (db) => {
     }
 
     let displayAddCard = async function (request,response) {
+
+        if (checkAuth(response.cookies.woof,response.cookies.meow)) {
+            if(woof in response.cookies|| meow in response.cookies){
+                response.redirect('/logout')
+            }
+            response.redirect('/')
+        }
+
         response.render ('frontend/addcard')
     }
 
     let previewNameCard = async function (request,response) {
+
+        if (checkAuth(response.cookies.woof,response.cookies.meow)) {
+            if(woof in response.cookies || meow in response.cookies){
+                response.redirect('/logout')
+            }
+            response.redirect('/')
+        }
+
         await performOCR.performOCR(request.file.path,(result)=>{
             result = JSON.parse(result);
             let resultFields = result.document.businessCard.field;
@@ -92,14 +121,35 @@ module.exports = (db) => {
     }
 
     let displayUserChoice = async function (request,response) {
+        if (checkAuth(response.cookies.woof,response.cookies.meow)) {
+            if(woof in response.cookies || meow in response.cookies){
+                response.redirect('/logout')
+            }
+            response.redirect('/')
+        }
+
         response.render('frontend/userchoice');
     }
 
     let displayUserUpload = async function (request,response){
+        if (checkAuth(response.cookies.woof,response.cookies.meow)) {
+            if(woof in response.cookies || meow in response.cookies){
+                response.redirect('/logout')
+            }
+            response.redirect('/')
+        }
+
         response.render('frontend/userupload')
     }
 
     let previewUserCard = async function (request,response){
+        if (checkAuth(response.cookies.woof,response.cookies.meow)) {
+            if(woof in response.cookies || meow in response.cookies){
+                response.redirect('/logout')
+            }
+            response.redirect('/')
+        }
+
         await performOCR.performOCR(request.file.path,(result)=>{
             result = JSON.parse(result);
             let resultFields = result.document.businessCard.field;
@@ -141,6 +191,13 @@ module.exports = (db) => {
     }
 
     let userDesignCard = async function (request,response) {
+        if (checkAuth(response.cookies.woof,response.cookies.meow)) {
+            if(woof in response.cookies || meow in response.cookies){
+                response.redirect('/logout')
+            }
+            response.redirect('/')
+        }
+
         response.render('frontend/userdesign')
     }
 
