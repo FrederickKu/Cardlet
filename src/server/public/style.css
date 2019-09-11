@@ -345,3 +345,33 @@
 	background-color:#1C6E8C;
 }
 
+.setModalWidth{
+	width: 75%;
+	margin: 0 auto;
+}
+
+.headerDisplayFlex {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid $blue;
+	box-shadow: 0 2px 1px $blue;
+}
+
+.modelButtonsContainer{
+	display:block;
+	width: 100%;
+	text-align: center;
+	margin-top: 2vh;
+}
+
+.modelButtonsContainer a{
+	display:block;
+	margin-bottom: 2vh;
+}
+
+.modelButtonsContainer button{
+	background-color: $blue;
+	color: white;
+}
