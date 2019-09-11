@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import style from './style.scss';
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,8 @@ class Wallet extends React.Component {
         super();
         this.state = {
             userWallet: [],
-            isLoaded: false
+            isLoaded: false,
+            error: ''
         }
 
         this.deleteCard=this.deleteCard.bind(this);
@@ -21,7 +22,7 @@ class Wallet extends React.Component {
             this.setState({userWallet: result.userWallet, isLoaded:true})
         },
         (error) =>{
-            console.log(error)
+            this.setState({error: error})
         })
     }
 
@@ -46,7 +47,7 @@ class Wallet extends React.Component {
             this.setState({userWallet:result.userWallet, isLoaded:true })
         },
         (error) =>{
-                console.log(error)
+                this.setState({error: error})
         })
     }
 

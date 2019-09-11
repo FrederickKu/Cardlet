@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import style from './style.scss';
 import { Link } from 'react-router-dom'
 
@@ -10,7 +10,8 @@ class UserCards extends React.Component {
             userCard: [],
             userDetails: {},
             isLoaded: false,
-            defaultCard: {}
+            defaultCard: {},
+            error: ''
         }
 
         this.deleteCard=this.deleteCard.bind(this);
@@ -25,7 +26,7 @@ class UserCards extends React.Component {
             this.setState({userCard: result.userCard, defaultCard:defaultCard[0], userDetails: result.userDetails, isLoaded:true})
         },
         (error) =>{
-            console.log(error)
+            this.setState({error: error})
         })
     }
 
@@ -47,7 +48,7 @@ class UserCards extends React.Component {
             this.setState({userCard: result.userCard})
         },
         (error) =>{
-                console.log(error)
+                this.setState({error: error})
         })
     }
 
@@ -71,7 +72,7 @@ class UserCards extends React.Component {
             this.setState({userCard: result.userCard, defaultCard:defaultCard[0]});
         },
         (error) =>{
-                console.log(error)
+                this.setState({error: error})
         })
     }
 

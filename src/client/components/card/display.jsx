@@ -52,4 +52,9 @@ class Display extends React.Component {
     }
 }
 
+Display.propTypes = {
+    card: PropTypes.object,
+}
+
+
 export default Display;

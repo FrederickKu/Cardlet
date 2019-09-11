@@ -11,7 +11,8 @@ class Index extends React.Component {
                 userCard: [],
                 userDetail: {},
                 userWallet: [],
-                isLoaded: false
+                isLoaded: false,
+                error: ''
             }
         }
 
@@ -22,7 +23,7 @@ class Index extends React.Component {
                 this.setState({userWallet: result.userWallet, userDetail:result.userDetails, userCard:result.userCard, isLoaded:true})
             },
             (error) =>{
-                console.log(error)
+                this.setState({error:error})
             })
         }
 

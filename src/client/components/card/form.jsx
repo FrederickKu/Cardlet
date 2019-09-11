@@ -96,6 +96,14 @@ class Form extends React.Component {
     }
 }
 
+
+Form.propTypes = {
+    card: PropTypes.object,
+    inputChangeHandler: PropTypes.func,
+    submitEdit: PropTypes.func,
+    closeEdit: PropTypes.func
+}
+
 export default Form;
 
 

@@ -16,7 +16,8 @@ class Card extends React.Component {
             displayCard: {},
             isLoaded: false,
             deleteCard: false,
-            cardEdit: {}
+            cardEdit: {},
+            error: ''
         }
 
         this.deleteCard=this.deleteCard.bind(this);
@@ -36,7 +37,7 @@ class Card extends React.Component {
             this.setState({displayCard: card, cardEdit: card, isLoaded: true})
         },
         (error) =>{
-            console.log(error)
+            this.setState({error: error})
         })
     }
 
@@ -57,11 +58,11 @@ class Card extends React.Component {
 
         })
         .then(response => response.json())
-        .then((result) => {
+        .then(() => {
             this.setState({displayCard: {}, isLoaded:true, deleteCard: true})
         },
         (error) =>{
-                console.log(error)
+                this.setState({error: error})
         })
     }
 
@@ -82,11 +83,9 @@ class Card extends React.Component {
 
     submitEdit() {
 
-        this.setState({isLoaded: false, enableEdit: false});
+        this.setState({enableEdit: false});
 
         let data = this.state.cardEdit;
-
-        console.log(data);
 
         fetch("/wallet/editcard", {
             method: "POST",
@@ -98,10 +97,10 @@ class Card extends React.Component {
         })
         .then(response => response.json())
         .then((result) => {
-            this.setState({displayCard: result.displayCard, cardEdit: result.displayCard, isLoaded: true})
+            this.setState({displayCard: result.displayCard, cardEdit: result.displayCard})
         },
         (error) =>{
-                console.log(error)
+                this.setState({error: error})
         })
 
     }
@@ -139,8 +138,11 @@ class Card extends React.Component {
                     </div>
                 )
             }
+        } else if (this.state.error !== '') {
+            return (
+                <div> this.state.error </div>
+            )
         } else {
-            console.log('display else');
             return (
                 <div>Loading page</div>
             )
@@ -148,4 +150,8 @@ class Card extends React.Component {
     }
 }
 
+
+Card.propTypes = {
+    match: PropTypes.object,
+}
 export default Card;
