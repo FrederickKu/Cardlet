@@ -32,7 +32,6 @@ class Card extends React.Component {
         .then((result) => {
             const cardID = parseInt(this.props.match.params.id);
             const card = result.userWallet.filter(card => card.namecard_id === cardID)[0];
-
             this.setState({displayCard: card, cardEdit: card, isLoaded: true})
         },
         (error) =>{

@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './style.scss';
-import { Redirect } from "react-router-dom";
 var moment = require('moment');
 
 
@@ -128,7 +127,6 @@ class Index extends React.Component {
                 window.location.replace("/signup2");
             }
         } else {
-            console.log('display else');
             return (
                 <div>Loading page</div>
             )

@@ -82,12 +82,80 @@ module.exports = (db) => {
         response.send({displayCard:displayCard})
     }
 
+    let deleteUserCard = async function (request,response) {
+        let [success,userDetails] = await db.login.getUserDetails(request.cookies.woof);
+        let deleteCard = await db.frontend.deleteUserCard(request.body.id);
+        let userCard = await db.frontend.getUserCards(userDetails.user_id);
+
+        response.send({userCard:userCard})
+
+    }
+
+    let displayUserChoice = async function (request,response) {
+        response.render('frontend/userchoice');
+    }
+
+    let displayUserUpload = async function (request,response){
+        response.render('frontend/userupload')
+    }
+
+    let previewUserCard = async function (request,response){
+        await performOCR.performOCR(request.file.path,(result)=>{
+            result = JSON.parse(result);
+            let resultFields = result.document.businessCard.field;
+
+            cardData = {
+                name: "",
+                title: "",
+                phone: "",
+                mobile: "",
+                email: "",
+                website: "",
+                address: "",
+                company: "",
+                url: ""
+            }
+
+            resultFields.forEach((field) => {
+                let attributeName = field._attributes.type.toLowerCase();
+                let fieldValue = field.value._text;
+
+                if (attributeName in cardData && cardData[attributeName] === ""){
+                    cardData[attributeName] = fieldValue;
+                }
+            })
+
+            cloudinary.uploader.upload(request.file.path, async function(photoResult) {
+                cardData.url = photoResult.url;
+                response.render('frontend/previewuser', cardData);
+            });
+        });
+
+    }
+
+    let userAddCard = async function (request,response) {
+        let success = await db.frontend.userAddCard(request.body,request.cookies.woof)
+
+        success ? response.redirect('/user') : response.status(404);
+
+    }
+
+    let userDesignCard = async function (request,response) {
+        response.render('frontend/userdesign')
+    }
+
   return {
       getUserDetails,
       displayAddCard,
       previewNameCard,
       addCard,
       deleteCard,
-      editCard
+      editCard,
+      deleteUserCard,
+      displayUserChoice,
+      displayUserUpload,
+      previewUserCard,
+      userAddCard,
+      userDesignCard
   };
 };

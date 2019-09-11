@@ -1,7 +1,7 @@
 module.exports = (dbPoolInstance) => {
 
     let getUserCards = async function (id){
-        const queryString = `SELECT * FROM namecards WHERE user_id = $1`;
+        const queryString = `SELECT * FROM namecards WHERE user_id = $1 ORDER BY default_card DESC`;
         const values = [id];
         const queryResult = await dbPoolInstance.query(queryString,values);
 
@@ -99,11 +99,58 @@ module.exports = (dbPoolInstance) => {
             console.log(error);
         }
     }
+
+
+    let deleteUserCard = async function (id) {
+        try {
+            let queryString = "UPDATE namecards SET user_id = null WHERE namecard_id = $1";
+            let values = [id];
+
+            let queryResult = await dbPoolInstance.query(queryString,values);
+
+            return;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    let userAddCard = async function (card,username) {
+        try {
+            let name = card.name;
+            let title = card.title;
+            let phone = card.phone;
+            let mobile = card.mobile;
+            let email = card.email;
+            let company = card.company;
+            let address = card.address;
+            let website = card.website;
+            let url = card.url;
+
+            let queryString = `SELECT user_id FROM users WHERE username = $1`;
+            let values = [username]
+            let queryResult = await dbPoolInstance.query(queryString,values);
+
+            let userID=queryResult.rows[0].user_id;
+
+            queryString = "INSERT INTO namecards (name,title,phone,mobile,email,company,address,website, namecard_image,user_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9, $10) returning *";
+            values = [name,title,phone,mobile,email,company,address,website,url,userID];
+
+            queryResult = await dbPoolInstance.query(queryString,values)
+
+            return true;
+        } catch(error) {
+            console.log("Add Card",error)
+            return false;
+        }
+
+    }
     return {
         getUserCards,
         getUserWallet,
         addCard,
         deleteCard,
-        editCard
+        editCard,
+        deleteUserCard,
+        userAddCard
     };
 }

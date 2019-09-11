@@ -1,6 +1,6 @@
 var React = require("react");
 
-class Preview extends React.Component {
+class UserPreview extends React.Component {
 
   render() {
 
@@ -33,7 +33,7 @@ class Preview extends React.Component {
                         <div className={"card-preview"} id = {"card-preview"} style={{backgroundImage: `url(${this.props.url})`}}>
                         </div>
                         <p>Edit/Confirm Details</p>
-                        <form method={"post"} action={"/wallet/addcard"} >
+                        <form method={"post"} action={"/user/addcard"} >
                             <div className={"form-group"}>
                                 <label for={"card-name"}>Name</label>
                                 <input type={"text"} className={"form-control"} id={"card-name"} placeholder={"Name"}   defaultValue={this.props.name} name={'name'} />
@@ -94,4 +94,4 @@ class Preview extends React.Component {
   }
 }
 
-module.exports = Preview;
+module.exports = UserPreview;

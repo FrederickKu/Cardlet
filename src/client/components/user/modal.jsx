@@ -5,7 +5,12 @@ import { Link } from 'react-router-dom'
 
 class UserModal extends React.Component {
 
+    closeModal() {
+        $('#userModal').modal('toggle');
+    }
+
     render(){
+
         return(
         <div className={"modal fade"} id={"userModal"} tabindex={"-1"} role={"dialog"} aria-labelledby={"User Modal"} aria-hidden={"true"}>
             <div className={`modal-dialog modal-dialog-centered ${style.setModalWidth}`} role={"document"}>
@@ -18,7 +23,7 @@ class UserModal extends React.Component {
                     </div>
                     <div className={`modal-body`}>
                         <div className={`${style.modelButtonsContainer}`}>
-                            <Link to='/user' ><button className={"btn"} data-dismiss="modal" >Edit Personal Namecards</button></Link>
+                            <Link to='/user'><button className={"btn"} onClick={this.closeModal}>Edit Personal Namecards</button></Link>
                             <a href={"/logout"}><button className={"btn"}>Log Out</button></a>
                         </div>
                     </div>

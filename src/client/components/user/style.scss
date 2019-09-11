@@ -32,3 +32,132 @@ $blue: #042F4B;
 		}
 	}
 }
+
+.profileContainer {
+	width:100%;
+	display: flex;
+	align-items:center;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 3vh;
+
+	img{
+		display:block;
+		width: 30%;
+		margin: 0;
+		border-radius: 50%;
+		margin-right: 4%;
+		margin-left: 3%;
+		box-shadow: 6px 6px 5px 0px rgba(202,202,202,0.75);
+	}
+
+	.userInformation {
+		width: 40%;
+		margin: 0;
+		text-align: center;
+
+		p{
+			font-size: 1.5rem;
+			text-shadow: 6px 6px 5px 0px rgba(202,202,202,0.75);
+
+		}
+
+		button{
+			background-color: $blue;
+			color: white;
+			box-shadow: 6px 6px 5px 0px rgba(202,202,202,0.75);
+		}
+	}
+}
+
+.cardParentContainer {
+	width: 95%;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 4vh auto 0;
+
+
+
+	.cardContainer {
+		width: 45%;
+		border-radius: 15px;
+		box-shadow: 6px 6px 5px 0px rgba(202,202,202,0.75);
+		margin: 0 2.5% 2vh 2.5%;
+
+		.defaultCard{
+			width: 100%;
+			height: 18vh;
+			border: 1px solid $blue;
+			background-position: center;
+			background-size: cover;
+			border-radius:10px;
+		}
+
+		.cardDesign {
+			width: 100%;
+			height: 18vh;
+			border: 1px solid #042f4b33;
+			border-radius: 15px;
+		}
+
+		.designTopRight{
+			padding-top: 2.3vh;
+			padding-right: 3%;
+			text-align:right;
+
+			.cardName {
+				margin:0;
+				font-weight: bold;
+				font-size: 0.6rem;
+				color: #1C6E8C;
+			}
+
+			.cardTitle{
+				font-style:italic;
+				margin:0;
+				margin-bottom: 1vh;
+				font-size: 0.4rem;
+			}
+		}
+
+		.designBottomLeft {
+			padding-left:3%;
+
+			p {
+				margin: 0;
+				font-size:0.4rem;
+				letter-spacing:0.1rem;
+
+				.label {
+					color: #1C6E8C;
+					font-weight: bold;
+				}
+			}
+		}
+
+		.cardbar {
+			margin-top:1.5vh;
+			width:65%;
+			height: 1vh;
+			border-radius: 10px;
+			background-color:#1C6E8C;
+		}
+
+		.cardButtons {
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: space-around;
+			margin-top: 1vh;
+
+			a,i {
+				display: inline-block;
+				width: 32%;
+				text-align: center;
+				color: $blue;
+				font-size: 1.2rem;
+			}
+		}
+	}
+}

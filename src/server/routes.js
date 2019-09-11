@@ -21,10 +21,18 @@ module.exports = (app, db) => {
 
   // frontend AJAX Calls
   app.get('/getUserDetails', frontend.getUserDetails);
+  app.post('/wallet/deletecard',frontend.deleteCard);
+  app.post('/wallet/editcard',frontend.editCard);
+
+  //backend routes
   app.get('/wallet/upload', frontend.displayAddCard);
   app.post('/wallet/preview',upload.single('photo'),frontend.previewNameCard)
   app.post('/wallet/addcard',frontend.addCard);
-  app.post('/wallet/deletecard',frontend.deleteCard);
-  app.post('/wallet/editcard',frontend.editCard)
+  app.post('/deleteusercard', frontend.deleteUserCard);
+  app.get('/user/addcard', frontend.displayUserChoice);
+  app.get('/user/upload', frontend.displayUserUpload);
+  app.post('/user/upload',upload.single('photo'),frontend.previewUserCard);
+  app.post('/user/addcard',frontend.userAddCard);
+  app.get('/user/design',frontend.userDesignCard);
 
 };
