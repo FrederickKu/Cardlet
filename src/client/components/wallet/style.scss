@@ -45,13 +45,15 @@ $blue: #042F4B;
 
 	.individualCard {
 		width: 100%;
-		margin-bottom: 1vh;
+		margin-bottom: 2vh;
 		border: 1.3px solid $blue;
 		border-radius: 20px;
 		display: flex;
 		flex: wrap;
 		align-items: center;
 		padding: 1vh 0;
+		box-shadow: 6px 6px 5px 0px rgba(202,202,202,0.75);
+
 
 		.cardImage {
 			background-size:cover;

@@ -14,7 +14,11 @@ module.exports = (dbPoolInstance) => {
     try {
         const hashedPassword = sha256(password+PSALT)
         const defaultPhoto = "https://res.cloudinary.com/dgv4tcunc/image/upload/v1567770337/defaultperson_bc1xxt.png";
-        const queryString = `INSERT INTO users   (username,password,user_name,user_photo) VALUES ($1,$2,$3,$4) RETURNING *`;
+        const queryString = `INSERT INTO users (username,password,user_name,user_photo) VALUES ($1,$2,$3,$4) RETURNING *`;
+
+        console.log('#################################')
+        console.log(photo);
+        console.log('#################################')
 
         if (photo !== null) {
             var values = [username, hashedPassword, name, photo]

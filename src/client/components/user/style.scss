@@ -70,13 +70,18 @@ $blue: #042F4B;
 	}
 }
 
+
+.personalCardTitle {
+	text-align: center;
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-top: 4vh;
+}
 .cardParentContainer {
 	width: 95%;
 	display: flex;
 	flex-wrap: wrap;
-	margin: 4vh auto 0;
-
-
+	margin: 2vh auto 0;
 
 	.cardContainer {
 		width: 45%;

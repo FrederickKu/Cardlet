@@ -98,7 +98,7 @@ class UserCards extends React.Component {
                             </div>
                             <div className={`${style.cardButtons}`}>
                                 <Link to={`/card/${card.namecard_id}`}><i className={'bx bxs-user-detail'}></i></Link>
-                                <a><i className={'bx bx-trash'} id={card.namecard_id} onClick={this.deleteCard}></i></a>
+                                {card.default_card ? <a><i className={'bx bx-trash'} id={card.namecard_id}></i></a> : <a><i className={'bx bx-trash'} id={card.namecard_id} onClick={this.deleteCard}></i></a> }
                                 {card.default_card ? <a><i className={'bx bxs-star'} ></i></a> : <a><i className={'bx bx-star'} id={card.namecard_id} onClick = {this.changeDefault} ></i></a>}
                             </div>
                         </div>
@@ -110,7 +110,7 @@ class UserCards extends React.Component {
                             </div>
                             <div className={`${style.cardButtons}`}>
                                 <Link to={`/card/${card.namecard_id}`}><i className={'bx bxs-user-detail'}></i></Link>
-                                <a><i className={'bx bx-trash'} id={card.namecard_id} onClick={this.deleteCard}></i></a>
+                                {card.default_card ? <a><i className={'bx bx-trash'} id={card.namecard_id}></i></a> : <a><i className={'bx bx-trash'} id={card.namecard_id} onClick={this.deleteCard}></i></a> }
                                 {card.default_card ? <a><i className={'bx bxs-star'} ></i></a> : <a><i className={'bx bx-star'} id={card.namecard_id} onClick = {this.changeDefault} ></i></a>}
                             </div>
                         </div>
@@ -127,6 +127,7 @@ class UserCards extends React.Component {
                             <a href={'user/addcard'}><button className="btn"> Add NameCard</button></a>
                         </div>
                     </div>
+                    <p className={`${style.personalCardTitle}`}> Personal Business Cards</p>
                     <div className={`${style.cardParentContainer}`}>
                         {cards}
                     </div>

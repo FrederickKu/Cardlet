@@ -12,6 +12,18 @@ cloudinary.config({
 
 module.exports = (db) => {
 
+    let checkAuth = function (username, session) {
+        if (username === undefined) {
+            return true;
+        } else {
+            const cookie = sha256(username+SALT);
+            if (session !== cookie){
+                return true;
+            }
+        }
+
+        return false;
+    }
 
   let displayLogin = async function (request, response) {
     response.render('login/login');
@@ -31,7 +43,7 @@ module.exports = (db) => {
             response.redirect("/signup2");
         })
     } else {
-            const [name,username] = await db.login.addUser(request.body.username, request.body.password, request.body.name, "");
+            const [name,username] = await db.login.addUser(request.body.username, request.body.password, request.body.name, null);
             const cookie = sha256(username+SALT);
             response.cookie('meow', cookie);
             response.cookie('woof', username);
@@ -40,46 +52,79 @@ module.exports = (db) => {
   };
 
   let displaySignupTwo = async function (request,response) {
-      let [exist,details] = await db.login.getUserDetails(request.cookies.woof);
 
-      response.render('login/signup2',{details:details});
+    let result = checkAuth(request.cookies.woof,request.cookies.meow)
+
+    if (result) {
+        if ('woof' in request.cookies || 'meow' in request.cookies){
+            response.redirect('/logout')
+        } else {
+            response.redirect('/')
+        }
+    }   else {
+        let [exist,details] = await db.login.getUserDetails(request.cookies.woof);
+
+         response.render('login/signup2',{details:details});
+    }
+
   };
 
   let displayUpload = async function (request,response) {
-      response.render('login/upload')
+    let result = checkAuth(request.cookies.woof,request.cookies.meow)
+
+    if (result) {
+        if ('woof' in request.cookies || 'meow' in request.cookies){
+            response.redirect('/logout')
+        } else {
+            response.redirect('/')
+        }
+    }   else {
+        response.render('login/upload');
+    }
+
   };
 
   let previewNamecard = async function (request,response) {
-    await performOCR.performOCR(request.file.path,(result)=>{
-        result = JSON.parse(result);
-        let resultFields = result.document.businessCard.field;
+    let result = checkAuth(request.cookies.woof,request.cookies.meow)
 
-        cardData = {
-            name: "",
-            title: "",
-            phone: "",
-            mobile: "",
-            email: "",
-            website: "",
-            address: "",
-            company: "",
-            url: ""
+    if (result) {
+        if ('woof' in request.cookies || 'meow' in request.cookies){
+            response.redirect('/logout')
+        } else {
+            response.redirect('/')
         }
+    }   else {
+        await performOCR.performOCR(request.file.path,(result)=>{
+            result = JSON.parse(result);
+            let resultFields = result.document.businessCard.field;
 
-        resultFields.forEach((field) => {
-            let attributeName = field._attributes.type.toLowerCase();
-            let fieldValue = field.value._text;
-
-            if (attributeName in cardData && cardData[attributeName] === ""){
-                cardData[attributeName] = fieldValue;
+            cardData = {
+                name: "",
+                title: "",
+                phone: "",
+                mobile: "",
+                email: "",
+                website: "",
+                address: "",
+                company: "",
+                url: ""
             }
-        })
 
-        cloudinary.uploader.upload(request.file.path, async function(photoResult) {
-            cardData.url = photoResult.url;
-            response.render('login/preview', cardData);
+            resultFields.forEach((field) => {
+                let attributeName = field._attributes.type.toLowerCase();
+                let fieldValue = field.value._text;
+
+                if (attributeName in cardData && cardData[attributeName] === ""){
+                    cardData[attributeName] = fieldValue;
+                }
+            })
+
+            cloudinary.uploader.upload(request.file.path, async function(photoResult) {
+                cardData.url = photoResult.url;
+                response.render('login/preview', cardData);
+            });
         });
-    });
+    }
   }
 
   let addCard = async function (request,response) {
@@ -89,7 +134,19 @@ module.exports = (db) => {
   }
 
   let designCard = async function (request,response) {
-      response.render('login/design');
+    let result = checkAuth(request.cookies.woof,request.cookies.meow)
+
+    if (result) {
+        if ('woof' in request.cookies || 'meow' in request.cookies){
+            response.redirect('/logout')
+        } else {
+            response.redirect('/')
+        }
+    }   else {
+        response.render('login/design');
+    }
+
+
   }
 
   let login = async function (request,response) {

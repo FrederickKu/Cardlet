@@ -1,5 +1,7 @@
 var performOCR = require('./performOCR');
 var cloudinary = require('cloudinary');
+var sha256=require('js-sha256');
+var SALT = 'ReAl sMo0Th Dude';
 
 cloudinary.config({
     cloud_name: 'dgv4tcunc',
@@ -8,6 +10,19 @@ cloudinary.config({
 });
 
 module.exports = (db) => {
+
+    let checkAuth = function (username, session) {
+        if (username === undefined) {
+            return true;
+        } else {
+            const cookie = sha256(username+SALT);
+            if (session !== cookie){
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     let getUserDetails = async function (request,response) {
         let [success,userDetails] = await db.login.getUserDetails(request.cookies.woof);
@@ -25,41 +40,64 @@ module.exports = (db) => {
     }
 
     let displayAddCard = async function (request,response) {
-        response.render ('frontend/addcard')
+
+        let result = checkAuth(request.cookies.woof,request.cookies.meow)
+
+        if (result) {
+            if ('woof' in request.cookies || 'meow' in request.cookies){
+                response.redirect('/logout')
+            } else {
+                response.redirect('/')
+            }
+        }   else {
+            response.render ('frontend/addcard')
+        }
+
+
     }
 
     let previewNameCard = async function (request,response) {
-        await performOCR.performOCR(request.file.path,(result)=>{
-            result = JSON.parse(result);
-            let resultFields = result.document.businessCard.field;
 
-            cardData = {
-                name: "",
-                title: "",
-                phone: "",
-                mobile: "",
-                email: "",
-                website: "",
-                address: "",
-                company: "",
-                url: ""
+        let result = checkAuth(request.cookies.woof,request.cookies.meow)
+
+        if (result) {
+            if ('woof' in request.cookies || 'meow' in request.cookies){
+                response.redirect('/logout')
+            } else {
+                response.redirect('/')
             }
+        }   else {
+            await performOCR.performOCR(request.file.path,(result)=>{
+                result = JSON.parse(result);
+                let resultFields = result.document.businessCard.field;
 
-            resultFields.forEach((field) => {
-                let attributeName = field._attributes.type.toLowerCase();
-                let fieldValue = field.value._text;
-
-                if (attributeName in cardData && cardData[attributeName] === ""){
-                    cardData[attributeName] = fieldValue;
+                cardData = {
+                    name: "",
+                    title: "",
+                    phone: "",
+                    mobile: "",
+                    email: "",
+                    website: "",
+                    address: "",
+                    company: "",
+                    url: ""
                 }
-            })
 
-            cloudinary.uploader.upload(request.file.path, async function(photoResult) {
-                cardData.url = photoResult.url;
-                response.render('frontend/preview', cardData);
+                resultFields.forEach((field) => {
+                    let attributeName = field._attributes.type.toLowerCase();
+                    let fieldValue = field.value._text;
+
+                    if (attributeName in cardData && cardData[attributeName] === ""){
+                        cardData[attributeName] = fieldValue;
+                    }
+                })
+
+                cloudinary.uploader.upload(request.file.path, async function(photoResult) {
+                    cardData.url = photoResult.url;
+                    response.render('frontend/preview', cardData);
+                });
             });
-        });
-
+        }
     }
 
     let addCard = async function (request,response) {
@@ -92,45 +130,75 @@ module.exports = (db) => {
     }
 
     let displayUserChoice = async function (request,response) {
-        response.render('frontend/userchoice');
+
+        let result = checkAuth(request.cookies.woof,request.cookies.meow)
+
+        if (result) {
+            if ('woof' in request.cookies || 'meow' in request.cookies){
+                response.redirect('/logout')
+            } else {
+                response.redirect('/')
+            }
+        }   else {
+            response.render('frontend/userchoice');
+        }
     }
 
     let displayUserUpload = async function (request,response){
-        response.render('frontend/userupload')
+        let result = checkAuth(request.cookies.woof,request.cookies.meow)
+
+        if (result) {
+            if ('woof' in request.cookies || 'meow' in request.cookies){
+                response.redirect('/logout')
+            } else {
+                response.redirect('/')
+            }
+        }   else {
+            response.render('frontend/userupload');
+        }
     }
 
     let previewUserCard = async function (request,response){
-        await performOCR.performOCR(request.file.path,(result)=>{
-            result = JSON.parse(result);
-            let resultFields = result.document.businessCard.field;
+        let result = checkAuth(request.cookies.woof,request.cookies.meow)
 
-            cardData = {
-                name: "",
-                title: "",
-                phone: "",
-                mobile: "",
-                email: "",
-                website: "",
-                address: "",
-                company: "",
-                url: ""
+        if (result) {
+            if ('woof' in request.cookies || 'meow' in request.cookies){
+                response.redirect('/logout')
+            } else {
+                response.redirect('/')
             }
+        }   else {
+            await performOCR.performOCR(request.file.path,(result)=>{
+                result = JSON.parse(result);
+                let resultFields = result.document.businessCard.field;
 
-            resultFields.forEach((field) => {
-                let attributeName = field._attributes.type.toLowerCase();
-                let fieldValue = field.value._text;
-
-                if (attributeName in cardData && cardData[attributeName] === ""){
-                    cardData[attributeName] = fieldValue;
+                cardData = {
+                    name: "",
+                    title: "",
+                    phone: "",
+                    mobile: "",
+                    email: "",
+                    website: "",
+                    address: "",
+                    company: "",
+                    url: ""
                 }
-            })
 
-            cloudinary.uploader.upload(request.file.path, async function(photoResult) {
-                cardData.url = photoResult.url;
-                response.render('frontend/previewuser', cardData);
+                resultFields.forEach((field) => {
+                    let attributeName = field._attributes.type.toLowerCase();
+                    let fieldValue = field.value._text;
+
+                    if (attributeName in cardData && cardData[attributeName] === ""){
+                        cardData[attributeName] = fieldValue;
+                    }
+                })
+
+                cloudinary.uploader.upload(request.file.path, async function(photoResult) {
+                    cardData.url = photoResult.url;
+                    response.render('frontend/previewuser', cardData);
+                });
             });
-        });
-
+        }
     }
 
     let userAddCard = async function (request,response) {
@@ -141,8 +209,22 @@ module.exports = (db) => {
     }
 
     let userDesignCard = async function (request,response) {
-        response.render('frontend/userdesign')
+
+        let result = checkAuth(request.cookies.woof,request.cookies.meow)
+
+        if (result) {
+            if ('woof' in request.cookies || 'meow' in request.cookies){
+                response.redirect('/logout')
+            } else {
+                response.redirect('/')
+            }
+        }   else {
+            response.render('frontend/userdesign');
+        }
     }
+
+
+
 
     let userChangeDefault = async function (request,response) {
         let changeDefault = await db.frontend.changeDefault(parseInt(request.body.oldDefault),parseInt(request.body.newDefault));
