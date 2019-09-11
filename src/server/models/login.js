@@ -69,7 +69,7 @@ module.exports = (dbPoolInstance) => {
 
             let userID=queryResult.rows[0].user_id;
 
-            queryString = "INSERT INTO namecards (name,title,phone,mobile,email,company,address,website, namecard_image, user_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9, $10) returning *";
+            queryString = "INSERT INTO namecards (name,title,phone,mobile,email,company,address,website, namecard_image, user_id, default_card) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9, $10, TRUE) returning *";
             values = [name,title,phone,mobile,email,company,address,website,url,userID];
 
             queryResult = dbPoolInstance.query(queryString,values)

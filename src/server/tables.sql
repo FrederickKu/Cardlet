@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS namecards (
   namecard_id SERIAL PRIMARY KEY,
-  namecard_image TEXT,
+  namecard_image TEXT DEFAULT 'nil',
   name TEXT,
 	title TEXT,
 	phone TEXT,
