@@ -1,0 +1,377 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+/* Login Page */
+.homeDisplay {
+	width: 75%;
+	text-align: center;
+	margin: 17vh auto 0;
+}
+
+.homeImage>img{
+	width: 75%;
+}
+
+.homeText {
+	margin-top: 2rem;
+	font-size:1.3rem;
+}
+
+.loginForm {
+	width: 75%;
+	margin: 5vh auto 0;
+	text-align: center;
+}
+
+.btn {
+	background-color:#042F4B;
+	color: #f2f2f2;
+	cursor: pointer;
+}
+
+.login-signup{
+	width: 75%;
+	text-align: center;
+	margin: 3vh auto 0;
+}
+
+.login-signup>p{
+	margin: 0;
+}
+
+.login-signup>a{
+	margin: 0;
+}
+
+/* Register Page */
+.signupDisplay{
+	width:75%;
+	text-align: center;
+	margin: 11vh auto 0;
+}
+
+.signupDisplay>p{
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-top: 4vh;
+}
+
+.signupForm{
+	width: 75%;
+	text-align:center;
+	margin: 3vh auto;
+}
+
+.custom-file-label{
+	text-align: left;
+}
+
+/* Navigation/Footer 	*/
+.navigation {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	box-shadow: 0 3px 2px #042F4B;
+	padding: 1vh 0;
+	height:7vh;
+	position: absolute;
+	top: 0px;
+}
+
+.app-detail-container {
+	display: flex;
+	align-items: center;
+	width: 50%;
+}
+
+.app-detail-container > img {
+	display: inline-block;
+	margin-left:5%;
+	width: 18%;
+}
+
+.app-detail-container > p {
+	display: inline-block;
+	font-family: 'PT Sans', sans-serif;
+	font-size:1.2rem;
+	letter-spacing: 0.1rem;
+	margin:0 0 0 0.1rem;
+}
+
+.navigation-top-container {
+	display: flex;
+	align-items: center;
+	flex-direction: row-reverse;
+	width: 50%;
+}
+
+.navigation-top-container > a {
+	display: inline-block;
+	font-size:1.3rem;
+	letter-spacing: 0.1rem;
+	margin: 0 5%;
+	color: #333;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 7vh;
+	box-shadow: 0 -3px 2px #042F4B;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer .footerHome,
+.footer .footerCard,
+.footer .footerPerson {
+	width: 33%;
+}
+
+.footer .footerHome p,
+.footer .footerCard p,
+.footer .footerPerson p {
+	margin: 0;
+	padding-top: 1vh;
+	text-align: center;
+
+}
+
+.footer .footerHome p a,
+.footer .footerCard p a,
+.footer .footerPerson p i {
+	color: #333;
+	font-size: 1.8rem
+}
+
+.footer>p{
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+	margin: 0;
+}
+
+/* signup2.jsx */
+.add-card-parent-container{
+	position: absolute;
+	top: 8vh;
+	width: 100%;
+	height: 85vh;
+	overflow: auto;
+	padding-top: 14vh;
+	font-family: 'PT Sans', sans-serif;
+}
+.add-card-container{
+	width: 75%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.add-card-hello{
+	margin-top:5vh;
+	font-size: 1.4rem;
+	letter-spacing: 0.05em;
+}
+
+.add-card-text{
+	font-size:1.2rem;
+	letter-spacing: 0.05em;
+}
+
+.add-card-button-1{
+	margin: 5vh 0;
+}
+
+
+/* upload.jsx */
+.upload-card-parent-container{
+	position: absolute;
+	top: 8vh;
+	width: 100%;
+	height: 85vh;
+	overflow: auto;
+	padding-top:7vh;
+}
+
+.upload-card-container{
+	width: 75%;
+	margin: 0 auto;
+}
+
+.upload-card-container>p{
+	text-align: center;
+	font-size: 1.4rem;
+	font-weight: bold;
+	margin-bottom: 5vh;
+}
+
+.card-preview {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 35vh;
+	border: 1px solid #042F4B;
+	margin-bottom: 7vh;
+	background-position: center;
+	background-size: cover;
+}
+
+.card-preview > p {
+	font-style: italic;
+	font-size: 1.2rem;
+	margin: 0;
+}
+
+#upload-form {
+	text-align: center;
+}
+
+#upload-form > button{
+	margin-top: 4vh;
+}
+
+/* preview.jsx */
+.confirm-card-parent-container{
+	position: absolute;
+	top: 8vh;
+	width: 100%;
+	height: 85vh;
+	overflow: auto;
+	padding-top:5vh;
+	padding-bottom:5vh;
+}
+
+.confirm-card-container {
+	width: 75%;
+	margin: 0 auto;
+}
+
+.confirm-card-container>p{
+	text-align: center;
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-bottom: 3vh;
+}
+
+.confirm-card-container>.card-preview{
+	width: 60%;
+	height: 23vh;
+	border: 1px solid #042F4B;
+	margin: 0 auto 4vh;
+	background-position: center;
+	background-size: cover;
+}
+
+.add-card-button-container {
+	text-align: center;
+}
+
+/* design.jsx */
+.design-card-parent-container {
+	position: absolute;
+	top: 8vh;
+	width: 100%;
+	height: 85vh;
+	overflow: auto;
+	padding-top:3vh;
+	padding-bottom:5vh;
+}
+
+.design-card-container {
+	width:75%;
+	margin: 0 auto;
+}
+
+.design-card-container>p{
+	text-align: center;
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-bottom: 2vh;
+}
+
+#card-design {
+	width: 100%;
+	height: 25vh;
+	border: 1px solid #042F4B;
+	margin-bottom: 2vh;
+	border-radius: 15px;
+}
+
+#card-design-top-right {
+	padding-top: 2.3vh;
+	padding-right: 3%;
+	text-align:right;
+}
+
+#card-design-name {
+	margin:0;
+	font-weight: bold;
+	font-size: 1.3rem;
+	color: #1C6E8C;
+}
+
+#card-design-title{
+	font-style:italic;
+	margin:0;
+	margin-bottom: 1vh;
+}
+
+#card-design-bottom-left {
+	padding-left:3%;
+}
+
+#card-design-bottom-left > p {
+	margin: 0;
+	font-size:0.7rem;
+	letter-spacing:0.1rem;
+}
+
+.label {
+	color: #1C6E8C;
+	font-weight: bold;
+}
+
+#cardbar {
+	margin-top:1.5vh;
+	width:63%;
+	height: 2vh;
+	background-color:#1C6E8C;
+}
+
+.setModalWidth{
+	width: 75%;
+	margin: 0 auto;
+}
+
+.headerDisplayFlex {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid $blue;
+	box-shadow: 0 2px 1px $blue;
+}
+
+.modelButtonsContainer{
+	display:block;
+	width: 100%;
+	text-align: center;
+	margin-top: 2vh;
+}
+
+.modelButtonsContainer a{
+	display:block;
+	margin-bottom: 2vh;
+}
+
+.modelButtonsContainer button{
+	background-color: $blue;
+	color: white;
+}
