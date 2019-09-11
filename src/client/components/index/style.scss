@@ -17,7 +17,7 @@ $blue: #042F4B;
 
 .defaultCard{
 	width: 75%;
-	height: 23vh;
+	height: 30vh;
 	border: 1px solid $blue;
 	margin: 0 auto 4vh;
 	background-position: center;
@@ -27,10 +27,14 @@ $blue: #042F4B;
 
 .cardDesign {
 	width: 75%;
-	height: 25vh;
-	border: 1px solid $blue;
+	height: 27vh;
+	border: 1px solid #042f4b33;
 	margin: 0 auto 2vh;
 	border-radius: 15px;
+	box-shadow: 6px 6px 5px 0px rgba(202,202,202,0.75);
+}
+
+
 
 	.designTopRight{
 		padding-top: 2.3vh;
@@ -72,7 +76,7 @@ $blue: #042F4B;
 		height: 2vh;
 		background-color:#1C6E8C;
 	}
-}
+
 
 .indexStatsContainer {
 	width: 90%;
@@ -86,10 +90,11 @@ $blue: #042F4B;
 	.monthTotal {
 		width: 45%;
 		display: inline-block;
-		border: 1px solid $blue;
+		border: 1px solid #2c363c2e;
 		border-radius: 15px;
 		text-align:center;
-		height: 20vh;
+		height: 45%;
+		box-shadow: 6px 6px 5px 0px rgba(202,202,202,0.75);
 	}
 
 	.bigNumber {
@@ -120,13 +125,16 @@ $blue: #042F4B;
 
 	.individualCard {
 		width: 100%;
-		margin-bottom: 1vh;
-		border: 1.3px solid $blue;
+		margin-bottom: 2.5vh;
+		border: 1.3px solid #042f4b42;
 		border-radius: 20px;
 		display: flex;
 		flex: wrap;
 		align-items: center;
 		padding: 1vh 0;
+		box-shadow: 6px 6px 5px 0px rgba(202,202,202,0.75);
+	}
+
 
 		.cardImage {
 			background-size:cover;
@@ -154,10 +162,57 @@ $blue: #042F4B;
 				font-size: 1rem;
 			}
 		}
-	}
 }
 
+.homeBackground {
+	background-image: url('https://smemagazine.asia/en/wp-content/uploads/2019/07/20190716-SME-Website-Importance-of-SME-Networking-Image.jpg');
+	width: 100%;
+	height: 84vh;
+	background-size: 850px 84vh;
+	background-position: 13%;
+	opacity: 0.6;
+}
 
+.homeContainer {
+	position: absolute;
+	width: 90%;
+	height: 75vh;
+	border: 1px solid black;
+	top: 4.5vh;
+	left: 5%;
+	background-color: RGBA(255,255,255,0.7);
+	box-shadow: 0px 0px 5px 9px rgba(46,46,46,0.73);
+
+	.homeImage {
+		opacity:1;
+		width: 63%;
+		display: block;
+		margin: 0 auto;
+		margin-top: 10vh;
+	}
+
+	p {
+		text-align:center;
+		font-size: 1.8rem;
+		font-weight:bold;
+		font-style: italic;
+		color:$blue;
+		margin-top:5vh;
+	}
+
+	a {
+		display:block;
+		text-align: center;
+		margin-top: 10vh;
+
+		.registerbtn {
+			width: 55%;
+			border-radius: 50px;
+			background-color: $blue;
+			color: white;
+		}
+	}
+}
 
 
 

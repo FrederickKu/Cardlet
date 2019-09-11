@@ -8,28 +8,41 @@ $blue: #042F4B;
 	flex-wrap: wrap;
 	width: 100%;
 	box-shadow: 0 3px 2px $blue;
-	padding: 1vh 0;
+	padding: 0.3vh 0;
 	height:7vh;
+	max-height: 7vh;
+	box-sizing: border-box;
 	position: absolute;
 	top: 0px;
 }
 
 .appDetailContainer {
-	display: flex;
-	align-items: center;
 	width: 50%;
+	a{
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		padding-top:0.7vh;
+		img {
+			display: inline-block;
+			margin-left:5%;
+			width: 18%;
+		}
 
-	img {
-		display: inline-block;
-		margin-left:5%;
-		width: 18%;
-	}
+		p {
+			display: inline-block;
+			font-size:1.3rem;
+			letter-spacing: 0.1rem;
+			margin:0 0 0 0.1rem;
+			color: $blue;
+		}
 
-	p {
-		display: inline-block;
-		font-size:1.3rem;
-		letter-spacing: 0.1rem;
-		margin:0 0 0 0.1rem;
+		&:link,
+		&:visited,
+		&:hover,
+		&:active{
+			text-decoration: none;
+		}
 	}
 }
 
@@ -65,7 +78,7 @@ $blue: #042F4B;
 	align-items: center;
 
 	>p{
-		margin-top:2vh;
+		margin: 0 ;
 		font-weight:bold;
 		font-style: italic;
 	}
@@ -76,11 +89,15 @@ $blue: #042F4B;
 		width: 33%;
 		p {
 			margin: 0;
-			padding-top: 1vh;
 			text-align: center;
 			font-size: 1.8rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
 			a {
 				color: #333;
+				line-height: 0;
 			}
 		}
 	}
@@ -93,4 +110,6 @@ $blue: #042F4B;
 		width: 100%;
 		height: 84vh;
 		overflow: auto;
+		box-sizing: border-box;
+
 }

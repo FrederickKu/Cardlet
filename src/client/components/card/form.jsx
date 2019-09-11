@@ -88,7 +88,7 @@ class Form extends React.Component {
                               onChange={this.props.inputChangeHandler}/>
                 </div>
                 <div className={`${style.formButtons}`}>
-                    <button className={`btn ${style.confirmEdit}`} onClick={this.props.submitEdit}>Edit Card</button>
+                    <button className={`btn ${style.confirmEdit}`} onClick={this.props.submitEdit}>Edit</button>
                     <button className={`btn ${style.cancelEdit}`} onClick={this.props.closeEdit}>Cancel</button>
                 </div>
             </div>

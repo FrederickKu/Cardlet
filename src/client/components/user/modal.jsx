@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style.scss';
+import { Link } from 'react-router-dom'
 
 class UserModal extends React.Component {
 
@@ -17,8 +18,7 @@ class UserModal extends React.Component {
                     </div>
                     <div className={`modal-body`}>
                         <div className={`${style.modelButtonsContainer}`}>
-                            <a href={"#"}><button className={"btn"}>Set Default Namecard</button></a>
-                            <a href={"#"}><button className={"btn"}>Edit Personal Namecards</button></a>
+                            <Link to='/user' ><button className={"btn"} data-dismiss="modal" >Edit Personal Namecards</button></Link>
                             <a href={"/logout"}><button className={"btn"}>Log Out</button></a>
                         </div>
                     </div>

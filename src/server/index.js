@@ -7,7 +7,7 @@ const db = require('./db');
 const path = require('path');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-process.env.PORT = process.env.PORT || 3001;
+process.env.PORT = process.env.PORT || 3000;
 
 function onUnhandledError(err) {
   console.log('ERROR:', err);

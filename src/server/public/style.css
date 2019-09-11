@@ -128,11 +128,33 @@
 	align-items: center;
 }
 
+.footer .footerHome,
+.footer .footerCard,
+.footer .footerPerson {
+	width: 33%;
+}
+
+.footer .footerHome p,
+.footer .footerCard p,
+.footer .footerPerson p {
+	margin: 0;
+	padding-top: 1vh;
+	text-align: center;
+
+}
+
+.footer .footerHome p a,
+.footer .footerCard p a,
+.footer .footerPerson p i {
+	color: #333;
+	font-size: 1.8rem
+}
+
 .footer>p{
 	text-align: center;
 	font-style: italic;
 	font-weight: bold;
-	 margin: 0;
+	margin: 0;
 }
 
 /* signup2.jsx */
