@@ -277,8 +277,7 @@
 	position: absolute;
 	top: 8vh;
 	width: 100%;
-	min-height: 25vh;
-	max-height: 77vh;
+	height: 77vh;
 	overflow: auto;
 	padding-top:3vh;
 	padding-bottom:5vh;
